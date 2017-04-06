@@ -7,6 +7,10 @@ RSpec.describe PagesController, type: :controller do
       get :dashboard
       expect(response).to have_http_status(:success)
     end
-  end
 
+    it "renders the dashboard template" do
+      get :dashboard
+      expect(response).to render_template("dashboard")
+    end
+  end
 end

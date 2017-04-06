@@ -10,4 +10,10 @@ FactoryGirl.define do
     password "password"
     role "trainer"
   end
+
+  factory :invalid_client, class: Client do
+    sequence(:email) { |n| "trainer#{n}@example.com" }
+    password ""
+    role "trainer"
+  end
 end

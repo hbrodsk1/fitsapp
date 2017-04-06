@@ -1,0 +1,20 @@
+<div class="new-message-container">
+	<%= form_for @message, url: {action: "create"} do |f| %>
+	  <%= hidden_field_tag :client_id, current_client.id %>
+	  <div>
+	  	<%= f.text_area :body, size: "60x12", placeholder: "Message...", id: "body" %>
+	  </div>
+
+	  <div>
+		  <%= f.select(:recipient) do %>
+		  	<% Client.all.each do |c| -%>
+		    	<%= content_tag(:option, c.email + " (#{c.role})", value: c.id) %>
+		  	<% end %>
+		  <% end %>
+	  </div>
+
+	  <div>
+	  	<%= f.submit "Create", id: "create-message" %>
+	  </div>
+	<% end %>
+</div>

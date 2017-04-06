@@ -9,6 +9,22 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <% if signed_in? %>
+            <li class="nav-item"><%= link_to "Log out", destroy_client_session_path, method: :delete %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to "Log In", new_client_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+   <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: "col-md-12 flash" %>
+    <% end -%>
+
     <%= yield %>
   </body>
 </html>

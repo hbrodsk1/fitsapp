@@ -23,11 +23,11 @@
 
   <div class="field">
     <%= f.label :role %><br />
-    <%= f.text_field :role %>
+    <%= f.select("role", options_for_select([['user', 'user'], ['trainer', 'trainer']]), { prompt: "Client Type"}) %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", id: "sign-up-button" %>
   </div>
 <% end %>
 
